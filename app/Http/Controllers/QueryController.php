@@ -7,16 +7,17 @@ use Illuminate\Support\Facades\DB;
 
 class QueryController extends Controller {
     function index() {
-      $books = DB::table('books')->get();
-      $authors = DB::table('authors')->get();
+      // $books = DB::table('books')->get();
+      // $authors = DB::table('authors')->get();
+      $authors = DB::table('authors')->limit(2)->get();
 
       // return response()->json($books);
 
       // return response()->json($authors);
 
 
-      $count = DB::table('authors')->count();
-      return response()->json($count);
+      // $count = DB::table('authors')->count();
+      return response()->json($authors);
      
 
       
