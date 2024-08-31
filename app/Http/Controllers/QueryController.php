@@ -15,7 +15,14 @@ class QueryController extends Controller {
 
       // where id = 1
 
-      $books = DB::table('books')->where('id',1)->get();
+      // $books = DB::table('books')->where('id',1)->get();
+      // $books = DB::table('books')->where('id',"<",5)->get();
+
+      // where id <5 & price <=14
+      $books = DB::table('books')->where([
+        ['id', "<=",5],
+        ['price',"<=",14] 
+      ])->get();
 
       // return response()->json($books);
 
