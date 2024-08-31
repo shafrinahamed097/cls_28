@@ -10,8 +10,12 @@ class QueryController extends Controller {
       // $books = DB::table('books')->get();
       // $authors = DB::table('authors')->get();
 
-      $authors = DB::table('authors')->limit(2)->offset(2)->get();
+      // $authors = DB::table('authors')->limit(2)->offset(2)->get();
       // mysql: SELECT * FROM `authors` LIMIT 2,2;
+
+      // where id = 1
+
+      $books = DB::table('books')->where('id',1)->get();
 
       // return response()->json($books);
 
@@ -19,7 +23,7 @@ class QueryController extends Controller {
 
 
       // $count = DB::table('authors')->count();
-      return response()->json($authors);
+      return response()->json($books);
      
 
       
