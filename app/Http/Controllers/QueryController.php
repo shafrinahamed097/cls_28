@@ -24,10 +24,13 @@ class QueryController extends Controller {
       //   ['price',"<=",14] 
       // ])->get();
 
-      $books = DB::table('books')
-      ->where('id', '<=', 5)
-      ->where('price', '<=',14)
-      ->get();
+      // $books = DB::table('books')
+      // ->where('id', '<=', 5)
+      // ->where('price', '<=',14)
+      // ->get();
+
+      // Dynamic Query
+      $books= DB::table('books')->wherePrice(12)->get();
 
       // return response()->json($books);
 
