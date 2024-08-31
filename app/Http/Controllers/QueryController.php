@@ -30,7 +30,11 @@ class QueryController extends Controller {
       // ->get();
 
       // Dynamic Query
-      $books= DB::table('books')->wherePrice(12)->get();
+      // $books = DB::table('books')->wherePrice(12)->get();
+
+      // where books id >=3 and <=7
+      $books = DB::table('books')->whereBetween('id', [3,7])->get();
+
 
       // return response()->json($books);
 
