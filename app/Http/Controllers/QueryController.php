@@ -9,7 +9,9 @@ class QueryController extends Controller {
     function index() {
       // $books = DB::table('books')->get();
       // $authors = DB::table('authors')->get();
-      $authors = DB::table('authors')->limit(2)->get();
+
+      $authors = DB::table('authors')->limit(2)->offset(2)->get();
+      // mysql: SELECT * FROM `authors` LIMIT 2,2;
 
       // return response()->json($books);
 
