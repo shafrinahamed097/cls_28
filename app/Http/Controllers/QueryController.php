@@ -45,7 +45,18 @@ class QueryController extends Controller {
     // $books = DB::table('books')->whereIn('id', [3,7])->get();
 
     // with orwhere
-    $books = DB::table('books')->where('id',3)->orWhere('id',7)->get();
+    // $books = DB::table('books')->where('id',3)->orWhere('id',7)->get();
+
+    // price >10 and <15
+     $books = DB::table('books')->whereBetween('price', [10,15])->get();
+
+    // where created_at = null
+    // $books = DB::table('books')->whereBetween('price', [10,15])->get();
+
+    // Maximum priced book
+    $max = DB::table('books')->max('price');
+    $maxPriceBook = DB::table('books')->wherePrice($max)->get();
+    return $maxPriceBook;
 
 
       // return response()->json($books);
@@ -54,7 +65,7 @@ class QueryController extends Controller {
 
 
       // $count = DB::table('authors')->count();
-      return response()->json($books);
+      // return response()->json($books);
      
 
       
