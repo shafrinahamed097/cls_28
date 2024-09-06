@@ -54,9 +54,12 @@ class QueryController extends Controller {
     // $books = DB::table('books')->whereBetween('price', [10,15])->get();
 
     // Maximum priced book
-    $max = DB::table('books')->max('price');
-    $maxPriceBook = DB::table('books')->wherePrice($max)->get();
-    return $maxPriceBook;
+    // $max = DB::table('books')->max('price');
+    // $maxPriceBook = DB::table('books')->wherePrice($max)->get();
+    // return $maxPriceBook;
+
+    // order by
+    $books = DB::table('books')->orderBy('title')->get();
 
 
       // return response()->json($books);
@@ -65,7 +68,7 @@ class QueryController extends Controller {
 
 
       // $count = DB::table('authors')->count();
-      // return response()->json($books);
+      return response()->json($books);
      
 
       
