@@ -59,7 +59,12 @@ class QueryController extends Controller {
     // return $maxPriceBook;
 
     // order by
-    $books = DB::table('books')->orderBy('title')->get();
+    // $books = DB::table('books')->orderBy('title',)->get(); // A to Z
+    // $books = DB::table('books')->orderBy('title', 'desc')->get();  // Z to A
+
+    // maximum priced book
+    // $books = DB::table('books')->orderBy('price', 'desc')->limit(1)->get();
+    // $books = DB::table('books')->orderBy('price', 'desc')->get();
 
 
       // return response()->json($books);
