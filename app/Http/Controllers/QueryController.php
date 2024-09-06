@@ -33,7 +33,13 @@ class QueryController extends Controller {
       // $books = DB::table('books')->wherePrice(12)->get();
 
       // where books id >=3 and <=7
-      $books = DB::table('books')->whereBetween('id', [3,7])->get();
+    //  $books = DB::table('books')->whereBetween('id', [3,7])->get();
+
+    //  different version
+    $books = DB::table('books')
+    ->where('id', '>=',3)
+    ->where('id', '<=',7)
+    ->get();
 
 
       // return response()->json($books);
