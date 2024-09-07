@@ -68,7 +68,7 @@ class QueryController extends Controller {
 
 
     // Join with authors and display name
-    $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors_id')->select('books.title', 'authors.name as author_name')->get();
+    $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors.id')->select('books.title', 'authors.name as author_name')->get();
     
 
 
