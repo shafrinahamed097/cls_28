@@ -75,8 +75,13 @@ class QueryController extends Controller {
     $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors.id')->select('books.title', 'authors.name as author_name', 'books.id as book_id')->where('author_id',1)->get();
 
     // Display sql
-    $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors.id')->select('books.title', 'authors.name as author_name', 'books.id as book_id')->where('author_id',1)->toSql();
+    // $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors.id')->select('books.title', 'authors.name as author_name', 'books.id as book_id')->where('author_id',1)->toSql();
     
+    // find books of all authors but author id 2
+    $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors.id')
+    ->select('books.title', 'authors.name as author_name', 'books.author_id', 'books.id as book_id')
+    ->whereNotIn('author_id', [2])->get();
+
 
 
 
