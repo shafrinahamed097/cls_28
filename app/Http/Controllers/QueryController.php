@@ -74,6 +74,10 @@ class QueryController extends Controller {
     // find all books from author id 1
     $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors.id')->select('books.title', 'authors.name as author_name', 'books.id as book_id')->where('author_id',1)->get();
 
+    // Display sql
+    $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors.id')->select('books.title', 'authors.name as author_name', 'books.id as book_id')->where('author_id',1)->toSql();
+    
+
 
 
       return response()->json($books);
