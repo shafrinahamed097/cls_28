@@ -82,6 +82,13 @@ class QueryController extends Controller {
     ->select('books.title', 'authors.name as author_name', 'books.author_id', 'books.id as book_id')
     ->whereNotIn('author_id', [2])->get();
 
+  //  find max priced book and books where price between 12 to 14
+
+  $max = DB::table('books')->max('price');
+  $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors.id')
+  ->select('books.title', 'authors.name as author_name', 'books.author_id', 'books.id as book_id', 'price')
+  ->wherePrice($max)
+  ->orwhereBetween('price', [12,14])->get();
 
 
 
