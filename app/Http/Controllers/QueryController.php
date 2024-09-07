@@ -48,7 +48,7 @@ class QueryController extends Controller {
     // $books = DB::table('books')->where('id',3)->orWhere('id',7)->get();
 
     // price >10 and <15
-     $books = DB::table('books')->whereBetween('price', [10,15])->get();
+    //  $books = DB::table('books')->whereBetween('price', [10,15])->get();
 
     // where created_at = null
     // $books = DB::table('books')->whereBetween('price', [10,15])->get();
@@ -67,13 +67,19 @@ class QueryController extends Controller {
     // $books = DB::table('books')->orderBy('price', 'desc')->get();
 
 
-      // return response()->json($books);
+    // Join with authors and display name
+    $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors_id')->select('books.title', 'authors.name as author_name')->get();
+    
+
+
+
+      return response()->json($books);
 
       // return response()->json($authors);
 
 
       // $count = DB::table('authors')->count();
-      return response()->json($books);
+      // return response()->json($books);
      
 
       
