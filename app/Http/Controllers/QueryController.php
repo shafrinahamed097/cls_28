@@ -90,11 +90,18 @@ class QueryController extends Controller {
   // ->wherePrice($max)
   // ->orwhereBetween('price', [12,14])->get();
 
-  // books and authors join
-  $max = DB::table('books')->max('price');
-  $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors.id')
+  // books and authors join 
+  // $max = DB::table('books')->max('price');
+  // $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors.id')
+  // ->select('books.title', 'authors.name as author_name', 'books.author_id', 'books.id as book_id')
+  // ->get();
+
+  // left join with authors
+
+  $books = DB::table('authors')
+  ->leftJoin('books', 'books.author_id', '=', 'authors.id')
   ->select('books.title', 'authors.name as author_name', 'books.author_id', 'books.id as book_id')
-  ->get();
+  ->orderBy('books.title', 'desc')->get();
 
 
 
