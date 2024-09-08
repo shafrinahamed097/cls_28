@@ -132,24 +132,34 @@ class QueryController extends Controller {
       //   ]);
 
       // insert a new author Henry Rider Haggard and His Book story writer.
-      $newAuthorId = DB::table('authors')->insert([
-        'name' => 'Henry Rider Haggard',
-        'bio' => 'American author and short story writer.'
-      ]);
+      // $newAuthorId = DB::table('authors')->insert([
+      //   'name' => 'Henry Rider Haggard',
+      //   'bio' => 'American author and short story writer.'
+      // ]);
 
-      DB::table('books')->insert([
-        'title' => 'Alan Quantermain',
-        'author_id'=> $newAuthorId,
-        'price' =>12
-      ]);
+      // DB::table('books')->insert([
+      //   'title' => 'Alan Quantermain',
+      //   'author_id'=> $newAuthorId,
+      //   'price' =>12
+      // ]);
 
         // $newAuthor = DB::table('authors')->whereName('Jack London')->get();
 
         // join books and authors
 
-        $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors.id')
-        ->select('books.title', 'authors.name as author_name', 'books.author_id', 'books.id as boos_id')->get();
+        // $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors.id')
+        // ->select('books.title', 'authors.name as author_name', 'books.author_id', 'books.id as boos_id')->get();
 
+
+        // Update price of the book to 2000 where id =10
+
+        DB::table('books')->whereId(10)->update([
+          'price'=>2000
+        ]);
+
+        $books = DB::table('books')
+        ->join('authors', 'books.author_id', '=', 'authors.id')
+        ->select('books.title', 'authors.name as author_name', 'books.author_id', 'books.id as book_id', 'price')->get();
 
         return $books;
       
