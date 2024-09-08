@@ -122,5 +122,20 @@ class QueryController extends Controller {
 
     }
 
+    function store(){
+      
+      // add a new author called Jack London
+
+      DB::table('authors')->insert([
+        'name' => 'Jack London',
+        'bio' => 'American author and short story writer.'
+        ]);
+
+        $newAuthor = DB::table('authors')->whereName('Jack London')->get();
+
+        return $newAuthor;
+      
+    }
+
 }
    
