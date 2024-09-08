@@ -148,14 +148,18 @@ class QueryController extends Controller {
         // join books and authors
 
         // $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors.id')
-        // ->select('books.title', 'authors.name as author_name', 'books.author_id', 'books.id as boos_id')->get();
+        // ->select('books.title', 'authors.name as author_name', 'books.author_id', 'books.id as book_id')->get();
 
 
         // Update price of the book to 2000 where id =10
 
-        DB::table('books')->whereId(10)->update([
-          'price'=>2000
-        ]);
+        // DB::table('books')->whereId(10)->update([
+        //   'price'=>2000
+        // ]);
+
+        // Delete all books price >14
+
+        DB::table('books')->where('price', '>', 14)->delete();
 
         $books = DB::table('books')
         ->join('authors', 'books.author_id', '=', 'authors.id')
