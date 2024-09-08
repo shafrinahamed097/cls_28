@@ -126,14 +126,32 @@ class QueryController extends Controller {
       
       // add a new author called Jack London
 
-      DB::table('authors')->insert([
-        'name' => 'Jack London',
+      // DB::table('authors')->insert([
+      //   'name' => 'Jack London',
+      //   'bio' => 'American author and short story writer.'
+      //   ]);
+
+      // insert a new author Henry Rider Haggard and His Book story writer.
+      $newAuthorId = DB::table('authors')->insert([
+        'name' => 'Henry Rider Haggard',
         'bio' => 'American author and short story writer.'
-        ]);
+      ]);
 
-        $newAuthor = DB::table('authors')->whereName('Jack London')->get();
+      DB::table('books')->insert([
+        'title' => 'Alan Quantermain',
+        'author_id'=> $newAuthorId,
+        'price' =>12
+      ]);
 
-        return $newAuthor;
+        // $newAuthor = DB::table('authors')->whereName('Jack London')->get();
+
+        // join books and authors
+
+        $books = DB::table('books')->join('authors', 'books.author_id', '=', 'authors.id')
+        ->select('books.title', 'authors.name as author_name', 'books.author_id', 'books.id as boos_id')->get();
+
+
+        return $books;
       
     }
 
